@@ -68,3 +68,15 @@ class FileStorage:
     def close(self):
         """call reload() method for deserializing the JSON file to objects"""
         self.reload()
+
+    def count(self, cls=None):
+        """Returns the number of objects in storage matching the given class.
+        If no class is passed, returns the count of all objects in storage
+        """
+        huluKef = classes.values()
+        if not cls:
+            kutr = 0
+            for kefl in huluKef:
+                kutr += len(models.storage.all(kefl).values())
+        else:
+            kutr = len(models.storage.all(cls).values())
