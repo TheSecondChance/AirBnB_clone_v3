@@ -7,7 +7,7 @@ from models import storage
 from api.v1.views import app_views
 from flask import Flask, Blueprint, jsonify, make_response
 from flask_cors import CORS
-import os:
+import os
 
 app = Flask(__name__)
 CORS(app, resources={r'/api/v1/*': {"origins": "0.0.0.0"}})
