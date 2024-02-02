@@ -24,7 +24,7 @@ def teardown_appcontext(exception):
 @app.errorhandler(404)
 def not_found(error):
     """This for not found for the json response
-    error massage"""
+    this for error massage"""
     return make_response(jsonify({'error': 'Not found'}), 404)
 
 if __name__ == "__main__":
