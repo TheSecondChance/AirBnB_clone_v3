@@ -10,9 +10,9 @@ from flask_cors import CORS
 import os
 
 app = Flask(__name__)
-CORS(app, resources={r'/api/v1/*': {"origins": "0.0.0.0"}})
 app.register_blueprint(app_views)
 app.url_map.strict_slashes = False
+CORS(app, resources={"/*": {"origins": "0.0.0.0"}})
 
 @app.teardown_appcontext
 def teardown_appcontext(exception):
@@ -27,6 +27,7 @@ def not_found(error):
     """This for not found for the json response
     this for error massage"""
     return make_response(jsonify({'error': 'Not found'}), 404)
+
 
 if __name__ == "__main__":
     app.run(host=os.getenv('HBNB_API_HOST', '0.0.0.0'),
