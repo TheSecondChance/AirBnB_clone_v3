@@ -26,8 +26,7 @@ def teardown_appcontext(exception):
 def not_found(error):
     """This for not found for the json response
     this for error massage"""
-    return jsonify({"error": "Not found"})
-
+    return make_response(jsonify({'error': 'Not found'}), 404)
 
 if __name__ == "__main__":
     app.run(host=os.getenv('HBNB_API_HOST', '0.0.0.0'),
