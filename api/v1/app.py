@@ -13,6 +13,7 @@ app = Flask(__name__)
 CORS(app, resources={"/*": {"origins": "0.0.0.0"}})
 app.register_blueprint(app_views)
 
+
 @app.teardown_appcontext
 def teardown_appcontext(exception):
     """This for teardown_appcontext
@@ -26,6 +27,7 @@ def not_found(error):
     """This for not found for the json response
     this for error massage"""
     return make_response(jsonify({'error': 'Not found'}), 404)
+
 
 if __name__ == '__main__':
     host = os.getenv("HBNB_API_HOST", "0.0.0.0")
