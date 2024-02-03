@@ -11,7 +11,7 @@ import os
 
 app = Flask(__name__)
 app.register_blueprint(app_views)
-CORS(app, resources={"/*": {"origins": "0.0.0.0"}})
+CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
 
 
 @app.teardown_appcontext
@@ -26,7 +26,7 @@ def teardown_appcontext(exception):
 def not_found(error):
     """This for not found for the json response
     this for error massage"""
-    return make_response(jsonify({'error': 'Not found'}), 404)
+    return jsonify({"error": "Not found"})
 
 
 if __name__ == "__main__":
