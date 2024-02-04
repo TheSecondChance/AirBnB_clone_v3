@@ -14,7 +14,7 @@ from models.city import City
 def cities(state_id):
     """ This for Retrieves the list of all City objects
     """
-    checkState = storage.get("State", state_id)
+    checkState = storage.get(State, state_id)
     if not checkState:
         abort(404)
     return jsonify([city.to_dict() for city in checkState.cities])
@@ -24,7 +24,7 @@ def cities(state_id):
 def city_id_retirve(city_id):
     """ This for Retrieves City object
     """
-    CeckCity = storage.get("City", city_id)
+    CeckCity = storage.get(City, city_id)
     if not CeckCity:
         abort(404)
     return jsonify(CeckCity.to_dict())
@@ -35,7 +35,7 @@ def city_id_retirve(city_id):
 def cityDelet(city_id):
     """ This for Deletes a City object
     """
-    deletCity = storage.get("City", city_id)
+    deletCity = storage.get(City, city_id)
     if not deletCity:
         abort(404)
     deletCity.delete()
@@ -48,7 +48,7 @@ def cityDelet(city_id):
 def createCity(state_id):
     """ This for Creates City object
     """
-    state = storage.get("State", state_id)
+    state = storage.get(State, state_id)
     if not state:
         abort(404)
     adisKetem = request.get_json()
@@ -68,7 +68,7 @@ def createCity(state_id):
 def putCity(city_id):
     """ This for Updates a City object
     """
-    city = storage.get("City", city_id)
+    city = storage.get(City, city_id)
     if not city:
         abort(404)
 
