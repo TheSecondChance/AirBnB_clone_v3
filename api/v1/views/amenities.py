@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""states.py"""
+"""This for amenty crud
+"""
 
 from api.v1.views import app_views
 from flask import abort, jsonify, make_response, request
@@ -13,7 +14,7 @@ def getAmenities():
     amenity information for all amenities
     """
     allAmenities = []
-    for amenity in storage.all("Amenity").values():
+    for amenity in storage.all(Amenity).values():
         allAmenities.append(amenity.to_dict())
     return jsonify(allAmenities)
 
@@ -23,7 +24,7 @@ def getAmenities():
 def getAmenity(amenity_id):
     """This for
     amenity info for specified amenity"""
-    singleAmenity = storage.get("Amenity", amenity_id)
+    singleAmenity = storage.get(Amenity, amenity_id)
     if singleAmenity is None:
         abort(404)
     return jsonify(singleAmenity.to_dict())
@@ -35,7 +36,7 @@ def deleteAmenity(amenity_id):
     """This for
     deletes amenity based on its id
     """
-    deletAmenity = storage.get("Amenity", amenity_id)
+    deletAmenity = storage.get(Amenity, amenity_id)
     if deletAmenity is None:
         abort(404)
     deletAmenity.delete()
@@ -61,7 +62,7 @@ def updateAmenity(amenity_id):
     """
     This for update amenity
     """
-    updatedAmenity = storage.get("Amenity", amenity_id)
+    updatedAmenity = storage.get(Amenity, amenity_id)
     if updatedAmenity is None:
         abort(404)
     if not request.get_json():
