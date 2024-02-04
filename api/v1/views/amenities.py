@@ -52,8 +52,8 @@ def createAmenity():
     if 'name' not in request.get_json():
         return make_response(jsonify({'error': 'Missing name'}), 400)
     createdAmenity = Amenity(**request.get_json())
-    saveNewCreated = createdAmenity.save()
-    return make_response(jsonify(saveNewCreated.to_dict()), 201)
+    createdAmenity.save()
+    return make_response(jsonify(createdAmenity.to_dict()), 201)
 
 
 @app_views.route('/amenities/<string:amenity_id>', methods=['PUT'],
