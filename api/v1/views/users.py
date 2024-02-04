@@ -21,7 +21,7 @@ def getUserId(user_id):
     """
     Retrieves user using by id
     """
-    userById = storage.get("User", user_id)
+    userById = storage.get(User, user_id)
     if not userById:
         abort(404)
     return jsonify(userById.to_dict())
@@ -32,7 +32,7 @@ def getUserId(user_id):
 def deletUser(user_id):
     """
     This for Deletes a User object """
-    delUser = storage.get("User", user_id)
+    delUser = storage.get(User, user_id)
     if not delUser:
         abort(404)
     delUser.delete()
@@ -61,7 +61,7 @@ def postUser():
 @app_views.route('/users/<user_id>', methods=['PUT'], strict_slashes=False)
 def updateUser(user_id):
     """ This for Updates a User object """
-    putUser = storage.get("User", user_id)
+    putUser = storage.get(User, user_id)
     if not putUser:
         abort(404)
     body_request = request.get_json()
