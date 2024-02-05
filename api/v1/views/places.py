@@ -60,7 +60,7 @@ def createPlace(city_id):
     kwargs = request.get_json()
     if 'user_id' not in kwargs:
         return make_response(jsonify({'error': 'Missing user_id'}), 400)
-    user = storage.get("User", kwargs['user_id'])
+    user = storage.get(User, kwargs['user_id'])
     if user is None:
         abort(404)
     if 'name' not in kwargs:
