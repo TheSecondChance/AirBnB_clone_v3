@@ -13,7 +13,7 @@ from models.amenity import Amenity
 def placesAmenities(place_id):
     """ This for Retrieves the list of
     Amenities objects in Place"""
-    rtrivePlace = storage.get("Place", place_id)
+    rtrivePlace = storage.get(Place, place_id)
     if not rtrivePlace:
         abort(404)
 
@@ -21,7 +21,7 @@ def placesAmenities(place_id):
         datas = [amenity.to_dict() for amenity in rtrivePlace.amenities]
     else:
         datas = [storage.get(
-            "Amenity", id).to_dict() for id in rtrivePlace.amenity_ids]
+            Amenity, id).to_dict() for id in rtrivePlace.amenity_ids]
     return jsonify(datas)
 
 
@@ -32,11 +32,11 @@ def amenityPlace(place_id, amenity_id):
     """
     This for Links an Amenity and a Place
     """
-    place = storage.get("Place", place_id)
+    place = storage.get(Place, place_id)
     if not place:
         abort(404)
 
-    amenity = storage.get("Amenity", amenity_id)
+    amenity = storage.get(Amenity, amenity_id)
     if not amenity:
         abort(404)
 
@@ -58,11 +58,11 @@ def amenityPlace(place_id, amenity_id):
 def delPlaces_amenities(place_id, amenity_id):
     """ This for Deletes Amenity object
     """
-    place = storage.get("Place", place_id)
+    place = storage.get(Place, place_id)
     if not place:
         abort(404)
 
-    amenity = storage.get("Amenity", amenity_id)
+    amenity = storage.get(Amenity, amenity_id)
     if not amenity:
         abort(404)
 
